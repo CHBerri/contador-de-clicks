@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Kablammo&family=Roboto&family=Titillium+Web&family=Ubuntu+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Helvetica, sans-serif;
+}
+
+main {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(circle, rgb(255, 255, 255), rgb(118, 255, 255));
+}
+
+.main-windows {
+    height: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.contador {
+    background-color: aqua;
+    position: absolute;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+    width: 400px;
+    height: 260px;
+    margin: 35px auto;
+}
+
+.registro {
+    background: radial-gradient(circle, rgb(118, 255, 255), rgb(0,255,255)) ;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+    width: 400px;
+    height: 260px;
+    margin: 35px auto;
+}
+
+#timer {
+    align-items: center;
+    display: none;
+    text-align: center;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h2 {
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.registro label {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    display: block;
+}
+
+.registro input {
+    display: block;
+    padding: 5px 0;
+    margin: 10px;
+}
+
+.esconder {
+    display: none;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+button {
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+    border: solid 2px black;
+
+}
+
+.ventana-records {
+    text-align: center;
+    line-height: 1.8;
+    transform: scale(0);
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background-color: rgb(186, 213, 213);
+    transition: all 0.3s ease;
+}
+
+.mostrar-ventana {
+    transform: scale(1);
+}
+
+.ventana-records h1 {
+    margin: 35px;
+}
+
+.ventana-records p {
+    font-size: 22px;
+}
+
+.ventana-records .retry {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 20px;
+}
+
+fieldset {
+    margin: 30px auto;
+    width: 700px;
+    padding: 30px;
+}
+
+legend {
+    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 5px;
+    padding: 10px;
+}
+
+.ventana-records ul {
+    list-style: none;
+    font-family: 'Ubuntu Mono', monospace;
+    letter-spacing: 0.3px;
+    font-size: 18px;
+    display: block;
+}

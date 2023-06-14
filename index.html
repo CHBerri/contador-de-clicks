@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de clicks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Titillium+Web&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main> 
+
+        <h1> ¿Cuantos clicks puedes dar en 15 segundos?</h1>
+        <h2> Presiona la barra espaciadora para iniciar el cronometro</h2>
+
+        <div class="main-windows">
+            <div class="contador">
+                <h1>Cantidad de clicks</h1>
+                <p id="numero">0</p>
+                <button type="button" class="btn">¡Click!</button>
+            </div>
+            <div class="registro">
+                <label for="name"> Ingresa un nombre</label>
+                    <input type="text" id="name">    <!-- Nombre a guardar -->
+                <button type="button" class="btn save-name">¡Vale!</button>
+            </div>
+        </div>
+
+        <p id="timer">00:00:00</p>
+
+        <div class="ventana-records">
+            <fieldset id="aquiVanLosRecords">
+            <legend>Record</legend>
+            <!-- Aqui se crea la lista-->
+            <ul id="lista-de-records"></ul>
+            </fieldset>
+            <button type="button" class="retry">Volver a intentar</button>
+        </div>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
