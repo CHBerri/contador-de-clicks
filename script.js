@@ -7,6 +7,7 @@ const guardar = document.querySelector(".save-name");
 const nombre = document.getElementById("name");
 const ventanaRegistro = document.querySelector(".registro");
 const agregarRecord = document.getElementById("aquiVanLosRecords");
+const empezar = document.querySelector(".start-game");
 
 let listaRecords = []
 
@@ -53,6 +54,7 @@ function creaRegistro(nuevoRecord) {
 /* -----------------------------  Guarda el nombre de la persona  ------------------------------------------------------ */  
 
 function guardarRegistro() {
+    empezar.style.display = "block"
     ventanaRegistro.classList.add("esconder");
     tomardelLocalStorage();
 }
@@ -99,60 +101,59 @@ function actualizarRecord() {
     }
 
     let nuevoRecord = {
-        nombre: name,
+        nombre: name.toUpperCase(),
         dots: puntos,
         puntos: puntaje
     };
 
     if (listaRecords.length < 5) {
+        creaRegistro(nuevoRecord)
 
+    } else if(listaRecords.some(indice => indice.nombre === nuevoRecord.nombre)) {
+
+        listaRecords = listaRecords.filter(indice => indice.nombre !== nuevoRecord.nombre)
         creaRegistro(nuevoRecord)
 
     } else if (nuevoRecord.puntos > listaRecords[listaRecords.length - 1].puntos) {
-                    listaRecords.pop()
-                    creaRegistro(nuevoRecord)
+
+        listaRecords.pop()
+        creaRegistro(nuevoRecord)
     }
+
+   
 
     nombre.value = ""
 }
 
 /* -----------------------------  Funcion que escucha cada vez que se da espacio para iniciar el timer  ------------------------------ */  
 
-document.addEventListener("keydown", function (event) {
+empezar.addEventListener("click", empiezaJuego);
 
-    if(timer.textContent != "00:00:00") {
-        console.log("Ya se esta corriendo el juego")
-    } else if(!ventanaRegistro.classList.contains("esconder")) {
-        console.log("Todavía no")
-    } else {
-        if(event.key === ' ') {
-            timer.style.display = "block"
-            const iniciaTimer = setInterval(() => {
-                
-                let min = minutos < 10 ? "0" + minutos : minutos         
-                let m = milisegundos < 10 ? "0" + milisegundos : milisegundos
-                let s = segundos < 10 ? "0" + segundos : segundos
+function empiezaJuego() {
+    empezar.style.display = "none"
+    timer.style.display = "block"
+    const iniciaTimer = setInterval(() => {
+        
+        let min = minutos < 10 ? "0" + minutos : minutos         
+        let m = milisegundos < 10 ? "0" + milisegundos : milisegundos
+        let s = segundos < 10 ? "0" + segundos : segundos
 
-                if(milisegundos >= 99) {
-                    milisegundos = 0
-                    segundos += 1
-                }
-
-                timer.textContent = `${min}:${s}:${m}`
-                milisegundos++;
-
-                if(segundos === 15) {
-                    actualizarRecord();
-                    [segundos, minutos, milisegundos] = [0,0,0]
-                    boton.removeEventListener("click", sumarClicks)
-                    timer.style.display = "none"
-                    ventana.classList.add("mostrar-ventana")
-                    timer.textContent = "00:00:00"
-                    clearInterval(iniciaTimer)
-                }   
-            }, 1)
+        if(milisegundos >= 99) {
+            milisegundos = 0
+            segundos += 1
         }
-    }
 
-})
+        timer.textContent = `${min}:${s}:${m}`
+        milisegundos++;
 
+        if(segundos === 15) {
+            actualizarRecord();
+            [segundos, minutos, milisegundos] = [0,0,0]
+            boton.removeEventListener("click", sumarClicks)
+            timer.style.display = "none"
+            ventana.classList.add("mostrar-ventana")
+            timer.textContent = "00:00:00"
+            clearInterval(iniciaTimer)
+        }   
+    }, 10)
+}

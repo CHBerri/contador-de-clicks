@@ -14,6 +14,8 @@ main {
     padding-top: 50px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 100vw;
     background: radial-gradient(circle, rgb(255, 255, 255), rgb(118, 255, 255));
@@ -165,9 +167,47 @@ legend {
 }
 
 .ventana-records ul {
+    text-align: center;
     list-style: none;
     font-family: 'Ubuntu Mono', monospace;
     letter-spacing: 0.3px;
     font-size: 18px;
     display: block;
+}
+
+.start-game {
+    margin-top: 0 auto;
+    display: none;
+    width: max-content;
+    opacity: 1;
+    animation: cambiaOpacidad 2s infinite;
+}
+
+@keyframes cambiaOpacidad {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+
+    fieldset {
+        width: 90%;
+        padding: 30px 5px;
+    }
+
+    .contador {
+        width: 380px;
+    }
+
+    .registro {
+        width: 380px;
+    }
+
 }
